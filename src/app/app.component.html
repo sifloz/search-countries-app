@@ -1,1 +1,20 @@
-<h1>Hello world!</h1>
+<div class="grid grid-cols-12 gap-4 p-4">
+    <div class="col-span-1">
+        <div class="grid grid-cols-1 gap-4">
+            <h2>Búsquedas</h2>
+            <hr>
+            <ul class="list-none">
+                <li class="">Searh country</li>
+                <li class="">By region</li>
+                <li class="">By capital</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-span-11">
+        <div class="grid grid-cols-1 gap-4">
+            <h2>Por Región</h2>
+            <hr>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
