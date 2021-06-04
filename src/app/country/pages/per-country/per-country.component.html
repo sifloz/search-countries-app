@@ -1,45 +1,12 @@
 <h2>Per Country</h2>
 <hr class="my-4">
 <div class="flex flex-row w-full">
-    <form (ngSubmit)="searchHandler()" autocomplete="off">
-        <input type="text" name="query" class="form-input" placeholder="Search country" [(ngModel)]="query">
-    </form>
+    <app-country-input
+        (onEnter)="searchHandler($event)"
+    ></app-country-input>
 </div>
 <hr class="my-4">
 <div *ngIf="hasError" class="bg-red-100 text-red-700 p-4">
     No se encontró nada con el término {{ query }}
 </div>
-<div *ngIf="countries.length > 0" class="grid grid-cols-1">
-    <div>
-        <table class="table-auto border-separate border border-gray-300 w-full">
-            <thead>
-                <tr>
-                    <th class="border border-gray-300">#</th>
-                    <th class="border border-gray-300">Flag</th>
-                    <th class="border border-gray-300">Name</th>
-                    <th class="border border-gray-300">Population</th>
-                    <th class="border border-gray-300"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let country of countries; let i = index">
-                    <td class="border border-gray-300">
-                        {{ i + 1 }}
-                    </td>
-                    <td class="border border-gray-300">
-                        <img class="w-12" [src]="country.flag" [alt]="country.name">
-                    </td>
-                    <td class="border border-gray-300">
-                        {{ country.name }}
-                    </td>
-                    <td class="border border-gray-300">
-                        {{ country.population | number }}
-                    </td>
-                    <td class="border border-gray-300">
-                        <a [routerLink]="[ '/country', country.alpha2Code ]">Ver...</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+<app-country-table class="grid grid-cols-1" [countries]="countries"></app-country-table>

@@ -15,8 +15,11 @@ export class PerCountryComponent {
 
   constructor(private countryService: CountryService) {}
 
-  searchHandler() {
+  searchHandler(query: string) {
+    
     this.hasError = false;
+    this.query = query;
+
     this.countryService.searchCountry(this.query)
       .subscribe((countries) => {
         console.log(countries);
