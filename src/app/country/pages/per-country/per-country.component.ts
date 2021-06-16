@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/Country.interface';
 
@@ -28,5 +28,9 @@ export class PerCountryComponent {
         this.hasError = true;
         this.countries = [];
       });
+  }
+
+  suggestionsHandler(query: string) {
+    this.hasError = false;
   }
 }
