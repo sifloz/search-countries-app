@@ -1,1 +1,11 @@
-<p>show-country works!</p>
+<div *ngIf="!country; else divCountry">
+Wait a moment please...
+</div>
+
+<ng-template #divCountry>
+    <div class="grid grid-cols-1">
+        <div>
+            {{ country.name }}
+        </div>
+    </div>
+</ng-template>
