@@ -3,6 +3,8 @@
 <div class="flex flex-row w-full">
     <app-country-input
         (onEnter)="searchHandler($event)"
+        (onDebounce)="suggestionsHandler($event)"
+        placeholder="Search country..."
     ></app-country-input>
 </div>
 <hr class="my-4">
