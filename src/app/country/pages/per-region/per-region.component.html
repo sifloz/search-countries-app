@@ -1,1 +1,21 @@
-<p>per-region works!</p>
+<h3>Search by region <small>{{ activeRegion | titlecase }}</small></h3>
+<hr>
+
+<h5>Select a region</h5>
+
+<div class="grid grid-cols-6 gap-4">
+    <div *ngFor="let region of regions" class="w-full">
+        <!-- [class.bg-gray-100]="activeRegion === region" -->
+        <!-- [ngClass]="{
+            'bg-gray-100': activeRegion === region
+        }" -->
+        <button
+            type="button"
+            [class]="getCSSClass(region)"
+            (click)="activateRegionHandler(region)">{{ region | titlecase }}</button>
+    </div>
+</div>
+
+<div *ngIf="countries.length > 0">
+    <app-country-table class="grid grid-cols-1" [countries]="countries"></app-country-table>
+</div>
