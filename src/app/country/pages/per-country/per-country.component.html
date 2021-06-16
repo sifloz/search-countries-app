@@ -5,7 +5,22 @@
         (onEnter)="searchHandler($event)"
         (onDebounce)="suggestionsHandler($event)"
         placeholder="Search country..."
+        class="w-full"
     ></app-country-input>
+</div>
+<div *ngIf="showSuggestions && query.length > 0" class="flex flex-row w-full">
+    <ul class="px-0 w-full">
+        <li *ngFor="let country of suggestedCountries" class="border list-none rounded-sm px-3 py-3 hover:bg-gray-100" style='border-bottom-width:0'>
+            <a class="block w-full" [routerLink]="['/country', country.alpha2Code]">
+                {{ country.name }}
+            </a>
+        </li>
+        <li (click)="searchSuggestedHandler()" class="border list-none rounded-sm px-3 py-3 hover:bg-gray-100" style='border-bottom-width:0'>
+            <a class="block w-full">
+                Search "{{ query }}"
+            </a>
+        </li>
+      </ul>
 </div>
 <hr class="my-4">
 <div *ngIf="hasError" class="bg-red-100 text-red-700 p-4">
